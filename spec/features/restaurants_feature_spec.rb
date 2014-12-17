@@ -58,7 +58,7 @@ feature 'restaurants' do
   context 'viewing restaurants' do
 
     let!(:kfc){ Restaurant.create(name: 'KFC') }
-    
+
     scenario 'lets a user view a restaurant' do
       visit '/restaurants'
       click_link 'KFC'
@@ -112,30 +112,28 @@ feature 'restaurants' do
   context 'user cannot edit/delete restaurants they have not created' do
   
     before do
-      user = User.create( email: 'another_user@test.com',
+      User.create( email: 'another_user@test.com',
                           password: 'another_test',
                           password_confirmation: 'another_test',
                           id: 2)
-      
-      restaurant = Restaurant.create(name: 'Square Pie',
-                                     user_id: 2)
     end
 
+    let(:restaurant) { Restaurant.create( name: 'Square Pie',
+                                          user_id: 2) }
+    
     scenario "user cannot edit or delete a restaurant he hasn't created" do
       visit '/restaurants'
       expect(page).not_to have_content 'Edit Square Pie'
       expect(page).not_to have_content 'Delete Square Pie'
+      visit "/restaurants/#{restaurant.id}/edit"
+      expect(page).to have_content "You cannot edit a restaurant you haven't created"
+      expect(page).not_to have_content 'Update Restaurant'
+      # delete "/restaurants/#{restaurant.id}"
+      # expect(page).to have_content "You cannot delete a restaurant you haven't created"
+      # expect(page).not_to have_content "Restaurant deleted successfully"
     end
   end
 end
-
-
-
-
-
-
-
-
 
 
 
