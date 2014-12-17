@@ -10,7 +10,7 @@ feature 'restaurants' do
     fill_in('Password confirmation', with: 'testtest')
     click_button('Sign up')
   end
-
+  
   context 'no restaurants have been added' do
 
     scenario 'should display a prompt to add a restaurant' do
@@ -62,6 +62,7 @@ feature 'restaurants' do
   end
 
   context 'editing restaurants' do
+
     
     before { Restaurant.create(name: 'KFC') }
 
@@ -73,6 +74,7 @@ feature 'restaurants' do
       expect(page).to have_content 'Kentucky Fried Chicken'
       expect(current_path).to eq '/restaurants'      
     end
+
 
   end
 
@@ -101,7 +103,29 @@ feature 'restaurants' do
 
   end
 
+  context 'user cannot edit/delete restaurants they have not created' do
+  
 
+  before do
+    click_link 'Sign out'
+    visit('/')
+    click_link('Sign up')
+    fill_in('Email', with: 'another_user@example.com')
+    fill_in('Password', with: 'anotherpass')
+    fill_in('Password confirmation', with: 'anotherpass')
+    click_button('Sign up')
+    click_link 'Add a restaurant'
+    fill_in 'Name', with: 'Square Pie'
+    click_button 'Create Restaurant'
+    click_link 'Sign out'
+  end
+
+    scenario "user cannot edit a restaurant he hasn't created" do
+      visit '/restaurants'
+      click_link 'Edit Square Pie'
+      expect(page).to have_content 'You cannot edit restaurants you have not created'
+    end
+  end
 end
 
 
