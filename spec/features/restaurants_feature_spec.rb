@@ -32,10 +32,7 @@ feature 'restaurants' do
 
   context 'restaurants have been added' do
 
-    before do
-      # Restaurant.create(name: 'KFC', user_id: 1)
-      create_restaurant
-    end
+    before { create_restaurant }
 
     scenario 'display restaurants' do
       visit '/restaurants'
@@ -61,8 +58,7 @@ feature 'restaurants' do
   context 'viewing restaurants' do
 
     let!(:kfc){ Restaurant.create(name: 'KFC') }
-    # before { create_restaurant }
-
+    
     scenario 'lets a user view a restaurant' do
       visit '/restaurants'
       click_link 'KFC'
@@ -74,8 +70,6 @@ feature 'restaurants' do
 
   context 'editing restaurants' do
 
-    
-    # before { Restaurant.create(name: 'KFC', user_id: 1) }
     before { create_restaurant }
 
     scenario 'let a user edit a restaurant' do
@@ -92,7 +86,6 @@ feature 'restaurants' do
 
   context 'deleting restaurants' do
 
-    # before { Restaurant.create(name: 'KFC', user_id: 1) }
     before { create_restaurant }
 
     scenario 'removes a restaurant when a user clicks a delete link' do
@@ -118,35 +111,20 @@ feature 'restaurants' do
 
   context 'user cannot edit/delete restaurants they have not created' do
   
+    before do
+      user = User.create( email: 'another_user@test.com',
+                          password: 'another_test',
+                          password_confirmation: 'another_test',
+                          id: 2)
+      
+      restaurant = Restaurant.create(name: 'Square Pie',
+                                     user_id: 2)
+    end
 
-  before do
-    user = User.create( email: 'another_user@test.com',
-                        password: 'another_test',
-                        password_confirmation: 'another_test',
-                        id: 2)
-    
-    restaurant = Restaurant.create(name: 'Square Pie',
-                                   user_id: 2)
-
-    # puts restaurant.user_id
-    # click_link 'Sign out'
-    # visit('/')
-    # click_link('Sign up')
-    # fill_in('Email', with: 'another_user@example.com')
-    # fill_in('Password', with: 'anotherpass')
-    # fill_in('Password confirmation', with: 'anotherpass')
-    # click_button('Sign up')
-    # click_link 'Add a restaurant'
-    # fill_in 'Name', with: 'Square Pie'
-    # click_button 'Create Restaurant'
-    # click_link 'Sign out'
-  end
-
-    scenario "user cannot edit a restaurant he hasn't created" do
+    scenario "user cannot edit or delete a restaurant he hasn't created" do
       visit '/restaurants'
-      # click_link 'Edit Square Pie'
-      # expect(page).to have_content 'You cannot edit restaurants you have not created'
       expect(page).not_to have_content 'Edit Square Pie'
+      expect(page).not_to have_content 'Delete Square Pie'
     end
   end
 end
