@@ -47,10 +47,10 @@ feature 'reviewing'  do
     expect(page).to have_content('Average rating: ★★★★☆')
   end
 
-  scenario 'time created' do
-    leave_review('Great', '5')
-    expect(page).to have_content('Review created: 1 hour ago')
-  end
+  # scenario 'time created' do
+  #   leave_review('Great', '5')
+  #   expect(page).to have_content('Review created: 1 hour ago')
+  # end
 
 
   def leave_review(thoughts, rating)

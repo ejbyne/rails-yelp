@@ -5,7 +5,7 @@ module ReviewsHelper
     '★' * rating.round + '☆' * remainder
   end
 
-  def time_created(time)
-    '0'
-  end
+  # def time_created(time)
+  #   '0'
+  # end
 end
