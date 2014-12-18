@@ -13,4 +13,11 @@ feature 'endorsing reviews' do
     expect(page).to have_content('1 endorsement')
   end
 
+  scenario 'will display the correct number of endorsements' do
+    visit '/restaurants'
+    click_link 'Endorse KFC'
+    click_link 'Endorse KFC'
+    expect(page).to have_content('2 endorsements')
+  end
+
 end
