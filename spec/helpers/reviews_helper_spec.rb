@@ -21,4 +21,12 @@ describe ReviewsHelper, :type => :helper do
     end
 
   end
+
+  context 'time created' do
+    it 'does nothing for no reviews' do
+      expect(helper.time_created('0')).to eq '0'
+    end
+    
+  end
+
 end

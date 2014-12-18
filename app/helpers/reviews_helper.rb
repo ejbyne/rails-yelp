@@ -4,4 +4,8 @@ module ReviewsHelper
     remainder = (5 - rating)
     '★' * rating.round + '☆' * remainder
   end
+
+  def time_created(time)
+    '0'
+  end
 end
