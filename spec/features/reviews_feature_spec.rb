@@ -22,4 +22,16 @@ feature 'reviewing'  do
     expect(current_path).to eq '/restaurants'
     expect(page).to have_content('so so')
   end
+
+  scenario 'user cannot leave more than 1 review per restaurant' do
+    visit '/restaurants'
+    click_link 'Review KFC'
+    fill_in 'Thoughts', with: 'so so'
+    select '3', from: 'Rating'
+    click_button 'Leave Review'
+    visit '/restaurants'
+    click_link 'Review KFC'
+    expect(page).to have_content('You cannot leave more than 1 review per restaurant')
+  end
+
 end
