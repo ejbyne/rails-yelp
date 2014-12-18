@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+gem 'rails_12factor', group: :production
 # gem 'dotenv-rails', :groups => [:development, :test, :production]
 gem 'dotenv-rails'
 
