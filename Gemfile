@@ -4,6 +4,8 @@ gem 'rails_12factor', group: :production
 # gem 'dotenv-rails', :groups => [:development, :test, :production]
 gem 'dotenv-rails'
 
+gem 'paperclip'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.rc3'
 # Use postgresql as the database for Active Record
