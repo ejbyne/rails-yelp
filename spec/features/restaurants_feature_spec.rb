@@ -133,6 +133,24 @@ feature 'restaurants' do
       # expect(page).not_to have_content "Restaurant deleted successfully"
     end
   end
+
+  context 'allows an image to be uploaded for a restaurant' do
+
+    scenario "restaurant create form contains image upload option" do
+      visit '/restaurants/new'
+      expect(page).to have_selector('#restaurant_image')
+    end
+
+    scenario "allows an image to be uploaded" do
+      visit '/restaurants/new'
+      attach_file('restaurant[image]', 'spec/features/del.jpg')
+      fill_in 'Name', with: "Del's Diner"
+      click_button 'Create Restaurant'
+      expect(page).to have_css("img[src*='del.jpg']")
+    end
+
+  end
+
 end
 
 
