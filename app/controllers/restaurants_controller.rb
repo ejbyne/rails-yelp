@@ -30,7 +30,7 @@ class RestaurantsController < ApplicationController
 
   def edit
     @restaurant = Restaurant.find(params[:id])
-    if current_user == nil || current_user.id != @restaurant.user_id #needs refactoring to model
+    if current_user == nil || current_user.id != @restaurant.user_id
       flash[:notice] = "You cannot edit a restaurant you haven't created"
       redirect_to '/restaurants'
     end
