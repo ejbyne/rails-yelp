@@ -75,8 +75,8 @@ feature 'reviews'  do
 
   context 'time created' do
 
-    scenario 'time created' do
-      expect(page).to have_content('Review created: 1 hour ago')
+    scenario 'displays the time a review was created' do
+      expect(page).to have_content('Review created: 0 hours ago')
     end
 
   end

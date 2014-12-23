@@ -13,6 +13,7 @@
         <% restaurant.reviews.each do |review| %>
           <li>
             <%= review.thoughts %> <%= star_rating(review.rating) %>
+            Review created: <%= time_since_created(review.created_at) %>
             <%= link_to "Endorse", review_endorsements_path(review), class: 'endorsements-link' %>
             <span class="endorsements_count"> <%= review.endorsements.count %></span> endorsements
             <% if current_user && current_user.id == review.user_id %>
