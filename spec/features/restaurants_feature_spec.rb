@@ -98,6 +98,7 @@ feature 'restaurants' do
   end
 
   context 'invalid restaurant' do
+    
     scenario 'does not let you submit a name that is too short' do
       visit '/restaurants'
       click_link 'Add a restaurant'

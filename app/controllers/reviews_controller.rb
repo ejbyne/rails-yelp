@@ -25,18 +25,16 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:thoughts, :rating)
   end
 
-  # def destroy
-  #   @restaurant = Restaurant.find(params[:id])
-  #   @review = Review.find(params[:id])
-  #   @restaurant_review = @restaurant.@review
-  #   if current_user == nil || current_user.id != @restaurant_review.user_id
-  #     flash[:notice] = "You cannot delete a review you haven't created"
-  #     redirect_to restaurants_path
-  #   else
-  #     @restaurant_review.destroy
-  #     flash[:notice] = "Review deleted successfully"
-  #     redirect_to restaurants_path
-  #   end
-  # end
+  def destroy
+    @review = Review.find(params[:id])
+    if current_user == nil || current_user.id != @review.user_id
+      flash[:notice] = "You cannot delete a review you haven't created"
+      redirect_to restaurants_path
+    else
+      @review.destroy
+      flash[:notice] = "Review deleted successfully"
+      redirect_to restaurants_path
+    end
+  end
 
 end
