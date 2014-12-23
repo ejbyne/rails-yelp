@@ -1,3 +1,5 @@
+
+<a href = "<%= new_restaurant_path %>" >Add a restaurant</a>
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
     <h2> <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> </h2>
@@ -22,7 +24,7 @@
           </li>
         <% end %>
       </ul>
-    <h3>Average rating: <%= star_rating(restaurant.average_rating) %></h3>  
+      <h3>Average rating: <%= star_rating(restaurant.average_rating) %></h3>  
     <% else %>
       <p>No reviews</p>
     <% end %>
@@ -30,6 +32,4 @@
 <% else %>
   No restaurants
 <% end %>
-
-<a href = "<%= new_restaurant_path %>" >Add a restaurant</a>
 

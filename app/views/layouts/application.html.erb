@@ -9,16 +9,29 @@
 </head>
 <body>
 
-  <% if user_signed_in? %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
-  <% end %>
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="pull-left">
+        <%= link_to "Yelp Clone", restaurants_path, class: "navbar-brand heading" %>
+      </div>
+      <div id="navbar">
+        <ul class="nav navbar-nav pull-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "registration" %></li>
+          <% else %>
+            <li><%= link_to "Sign in", new_user_session_path, class: "registration" %></li>
+            <li><%= link_to "Sign up", new_user_registration_path, class: "registration" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <%= notice %>
-  <%= alert %>
-  <%= yield %>
+  <article>
+    <%= notice %>
+    <%= alert %>
+    <%= yield %>
+  </article>
 
 </body>
 </html>

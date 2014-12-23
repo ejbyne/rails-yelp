@@ -4,6 +4,8 @@ gem 'rails_12factor', group: :production
 # gem 'dotenv-rails', :groups => [:development, :test, :production]
 gem 'dotenv-rails'
 
+gem 'twitter-bootstrap-rails'
+
 gem 'paperclip'
 
 gem 'aws-sdk' #amazon web services
