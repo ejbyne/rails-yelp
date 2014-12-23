@@ -2,6 +2,23 @@ require 'rails_helper'
 
 feature 'reviewing'  do
 
+  def leave_review(thoughts, rating)
+    visit '/restaurants'
+    click_link 'Review KFC'
+    fill_in 'Thoughts', with: thoughts
+    select rating, from: 'Rating'
+    click_button 'Leave Review'
+  end
+
+  def another_user_sign_up
+    visit('/')
+    click_link('Sign up')
+    fill_in('Email', with: 'anotheruser@example.com')
+    fill_in('Password', with: 'testtest')
+    fill_in('Password confirmation', with: 'testtest')
+    click_button('Sign up')
+  end
+
   before do
     Restaurant.create name: 'KFC'
     visit('/')
@@ -50,22 +67,4 @@ feature 'reviewing'  do
   #   expect(page).to have_content('Review created: 1 hour ago')
   # end
 
-
-  def leave_review(thoughts, rating)
-    visit '/restaurants'
-    click_link 'Review KFC'
-    fill_in 'Thoughts', with: thoughts
-    select rating, from: 'Rating'
-    click_button 'Leave Review'
-  end
-
-  def another_user_sign_up
-    visit('/')
-    click_link('Sign up')
-    fill_in('Email', with: 'anotheruser@example.com')
-    fill_in('Password', with: 'testtest')
-    fill_in('Password confirmation', with: 'testtest')
-    click_button('Sign up')
-  end
-  
 end
