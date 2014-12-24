@@ -1,7 +1,7 @@
 <%= form_for [@restaurant, @review] do |f| %>
   <%= f.label :thoughts %>
-  <%= f.text_area :thoughts %>
+  <%= f.text_field :thoughts %> <br><br>
   <%= f.label :rating %>
-  <%= f.select :rating, (1..5) %>
+  <%= f.select :rating, (1..5) %> <br><br>
   <%= f.submit 'Leave Review' %>
 <% end %>

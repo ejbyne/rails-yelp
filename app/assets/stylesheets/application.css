@@ -33,8 +33,34 @@ article {
   position: relative;
   top: 80px;
   left: 20px;
+  /*right: 20px;*/
 }
 
 img {
   padding: 10px;
+}
+
+section {
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 15px;
+}
+
+p {
+  font-size: 12px;
+}
+
+li {
+  font-size: 12px;
 }
