@@ -94,9 +94,9 @@ feature 'restaurants' do
       visit "/restaurants/#{another_restaurant.id}/edit"
       expect(page).to have_content "You cannot edit a restaurant you haven't created"
       expect(page).not_to have_content 'Update Restaurant'
-      # delete "/restaurants/#{restaurant.id}"
-      # expect(page).to have_content "You cannot delete a restaurant you haven't created"
-      # expect(page).not_to have_content "Restaurant deleted successfully"
+      page.driver.delete("/restaurants/#{another_restaurant.id}")
+      visit '/restaurants'
+      expect(page).to have_content "Square Pie"
     end
 
   end
