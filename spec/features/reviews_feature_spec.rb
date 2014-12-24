@@ -58,6 +58,9 @@ feature 'reviews'  do
       another_user_sign_up
       visit '/restaurants'
       expect(page).not_to have_content 'Delete this review'
+      page.driver.delete("/reviews/4")
+      visit '/restaurants'
+      expect(page).to have_content 'so so'
     end
 
   end
