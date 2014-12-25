@@ -1,22 +1,23 @@
-
 <a href = "<%= new_restaurant_path %>" >Add a restaurant</a>
-
-  <% if @restaurants.any? %>
-    <% @restaurants.each do |restaurant| %>
-      <section>
-        <h2> <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> </h2>
+<br>
+<% if @restaurants.any? %>
+  <% @restaurants.each do |restaurant| %>
+    <div class="summary">
+      <thumbnail>
         <%= image_tag restaurant.image.url(:thumb) %>
+      </thumbnail>
+      <summary>
+        <h2> <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> </h2>
         <% if restaurant.reviews.any? %>
           <h3>Average rating: <%= star_rating(restaurant.average_rating) %></h3>  
         <% else %>
           <h3>No reviews</p>
         <% end %>
-      </section>
-    <% end %>
-  <% else %>
-    <section>
-      No restaurants
-    </section>
+      </summary>
+    </div>
   <% end %>
-
-
+<% else %>
+  <div class="summary">
+    No restaurants
+  </div>
+<% end %>
