@@ -6,11 +6,15 @@
   border: 2px solid red;  
 }
 
+ul {
+  padding-left: 0;
+}
+
 li {
   list-style-type: none;
 }
 
-.summary {
+.restaurant_summary {
   width: 400px;
   height: 165px;
   display: inline-flex;
@@ -22,12 +26,25 @@ li {
   margin-bottom: 10px;
 }
 
-thumbnail {
-  width: 100px;
+.restaurant_thumbnail {
   flex: 1;
+  height: 100%;
 }
 
-summary {
-  width: 100px;
+.restaurant_basic_info {
+  flex: 1.5;
+}
+
+.restaurant_detail {
+  width: 100%;
+  display: flex;
+}
+
+.restaurant_image {
   flex: 1;
+  height: 100%;
+}
+
+.restaurant_detailed_info {
+  flex: 1.5;
 }

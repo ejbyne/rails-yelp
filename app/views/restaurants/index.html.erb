@@ -2,22 +2,22 @@
 <br>
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
-    <div class="summary">
-      <thumbnail>
+    <div class="restaurant_summary">
+      <div class="restaurant_thumbnail">
         <%= image_tag restaurant.image.url(:thumb) %>
-      </thumbnail>
-      <summary>
+      </div>
+      <div class="retaurant_basic_info">
         <h2> <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> </h2>
         <% if restaurant.reviews.any? %>
           <h3>Average rating: <%= star_rating(restaurant.average_rating) %></h3>  
         <% else %>
           <h3>No reviews</p>
         <% end %>
-      </summary>
+      </div>
     </div>
   <% end %>
 <% else %>
-  <div class="summary">
+  <div class="restaurant_summary">
     No restaurants
   </div>
 <% end %>
