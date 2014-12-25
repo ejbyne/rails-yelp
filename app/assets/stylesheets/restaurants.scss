@@ -17,7 +17,7 @@ li {
 .restaurant_summary {
   width: 400px;
   height: 165px;
-  display: inline-flex;
+  display: inline-block;
   background-color: #ecf0f1;
   border-radius: 10px;
   padding: 20px;
@@ -27,12 +27,13 @@ li {
 }
 
 .restaurant_thumbnail {
-  flex: 1;
-  height: 100%;
+  display: inline-block;
+  width: 100px;
 }
 
 .restaurant_basic_info {
-  flex: 1.5;
+width: 100px;
+  display: inline-block;
 }
 
 .restaurant_detail {
