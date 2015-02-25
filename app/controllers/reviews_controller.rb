@@ -2,9 +2,12 @@ class ReviewsController < ApplicationController
 
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
-    if @restaurant.reviews.any?
+    if !current_user
+      flash[:notice] = 'You must log in to leave a review'
+      redirect_to restaurant_path(@restaurant)
+    elsif @restaurant.reviews.any?
       @restaurant.reviews.each do |review|  
-        if current_user.id == review.user_id
+        if current_user && current_user.id == review.user_id
           flash[:notice] = 'You cannot leave more than 1 review per restaurant'
           redirect_to restaurant_path(@restaurant)
         end
