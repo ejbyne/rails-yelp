@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/ejbyne/rails-yelp/badges/gpa.svg)](https://codeclimate.com/github/ejbyne/rails-yelp)
+[![Test Coverage](https://codeclimate.com/github/ejbyne/rails-yelp/badges/coverage.svg)](https://codeclimate.com/github/ejbyne/rails-yelp)
+
 # Yelp Clone (Ruby on Rails)
 
 ## Summary
