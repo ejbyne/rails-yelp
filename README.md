@@ -11,7 +11,7 @@ Through this project we learnt how to create and structure a Rails application u
 
 We used the Devise gem to set up a user authentication system, and also added the ability to sign in with Facebook using the Omniauth gem.
 
-The live version of the application can be accessed [here](https://rails-yelp-clone.herokuapp.com).
+The live version of the application can be viewed [here](https://rails-yelp-clone.herokuapp.com).
 
 ## Features
 
